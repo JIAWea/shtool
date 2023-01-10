@@ -72,8 +72,6 @@ push() {
 	 	git push origin dev:dev;
 	elif [ "$1" = "t" ]; then
 	 	git push origin test:test;
-	elif [ "$1" = "tr" ]; then
-	 	git push origin test/realihub:test/realihub;
 	else
 		git push origin "$1";
 	fi
