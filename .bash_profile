@@ -1,9 +1,11 @@
-alias jj='mkdir -p /Users/mac/ray/docs/$(date +%Y)/$(date +%Y-%m)/; vim /Users/mac/ray/docs/$(date +%Y)/$(date +%Y-%m)/week-$(date +%w).md'
+BASE_DIR="/g/ray"
+JJ_DIR="${BASE_DIR}/docs/$(date +%Y)/$(date +%Y-%m)"
+alias jj='mkdir -p ${JJ_DIR}; vim ${JJ_DIR}/week-$(date +%V).md'
 
 alias ll='ls -la'
-alias cr='cd /Users/mac/src'
-alias cry='cd /Users/mac/src/py'
-alias crg='cd /Users/mac/src/go'
+alias cr='cd ${BASE_DIR}'
+alias cry='cd ${BASE_DIR}/py'
+alias crg='cd ${BASE_DIR}/go/workspace'
 alias python='python3'
 
 
@@ -24,7 +26,7 @@ alias grmod='git restore go.mod'
 
 alias gss='gss() { git stash save "$1"; }; gss'
 alias gd='diff() { git diff "$1"; }; diff'
-alias ga='add() { git add "$1"; }; add'
+alias ga='add() { git add $@; }; add'
 alias gm='commit() { git commit -m "$1"; }; commit'
 alias gmok='gok() { git add . && git commit -m ok; }; gok'
 # alias gclone='clone() { git clone ssh://git@xxx/"$1".git; }; clone'
