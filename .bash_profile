@@ -79,6 +79,28 @@ push() {
 	fi
 }
 
+gen_proto() {
+	file=$1
+	if [[ "${file##*.}"x == 'proto'x ]]; then
+		proto_dir=${BASE_DIR}"/go/workspace/proto"
+
+		file_dir=${file%/*}
+		file_dir_name=${file_dir##*/}
+		file_name=${file##*/}
+
+		if [ "$file_name" == "datacenter.proto" ]
+		then
+			protoc --proto_path=${proto_dir} --go_out=${proto_dir} --micro_out=${proto_dir} --micro_opt=use_grpc=1  ${proto_dir}/${file_dir_name}/${file_name}
+		else
+			protoc --proto_path=${proto_dir} --go_out=${proto_dir} --micro_out=${proto_dir} ${proto_dir}/${file_dir_name}/${file_name}
+		fi
+
+		echo 'success';
+	else
+		echo 'gen proto fail, file must be end with proto';
+	fi
+}
+
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
