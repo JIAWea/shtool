@@ -1,6 +1,5 @@
 BASE_DIR="/g/ray"
-JJ_DIR="${BASE_DIR}/docs/$(date +%Y)/$(date +%Y-%m)"
-alias jj='mkdir -p ${JJ_DIR}; vim ${JJ_DIR}/week-$(date +%V).md'
+alias jj='mkdir -p ${BASE_DIR}/docs/$(date +%Y)/$(date +%Y-%m); vim ${BASE_DIR}/docs/$(date +%Y)/$(date +%Y-%m)/week-$(date +%V).md'
 
 alias ll='ls -la'
 alias cr='cd ${BASE_DIR}'
